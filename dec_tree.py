@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # Converting the data into Pandas DataFrame object
 df = pd.DataFrame(pd.read_csv("data.csv"))
 
-# Dropping category and price columns as the program have to predict category without observing the price as we humans do
+# Dropping category and price columns as the program have to predict category without observing the price
 x = df.drop(['category', 'price'], axis=1)
 
 # Category is what our program to predict
