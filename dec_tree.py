@@ -7,27 +7,27 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
 
 # Converting the data into Pandas DataFrame object
-df = pd.DataFrame(pd.read_csv("data.csv"))
+df: pd.DataFrame = pd.DataFrame(pd.read_csv("data.csv"))
 
 # Dropping category and price columns as the program have to predict category without observing the price
-x = df.drop(['category', 'price'], axis=1)
+x: pd.DataFrame = df.drop(['category', 'price'], axis=1)
 
 # Category is what our program to predict
-y = df['category']
+y: pd.Series = df['category']
 
 # Converting our qualitative columns into quantitative columns
-x_encoder = ce.OrdinalEncoder(cols=['make',
-                                    'air_bags',
-                                    'air_conditioning',
-                                    'power_windows',
-                                    'power_steering',
-                                    'sun_roof',
-                                    'alloy_rims'])
-x = x_encoder.fit_transform(x)
+x_encoder: ce.OrdinalEncoder = ce.OrdinalEncoder(cols=['make',
+                                                       'air_bags',
+                                                       'air_conditioning',
+                                                       'power_windows',
+                                                       'power_steering',
+                                                       'sun_roof',
+                                                       'alloy_rims'])
+x: pd.DataFrame = x_encoder.fit_transform(x)
 
 # Also converting the predictor from qualitative into quantitative
 y_encoder = ce.OrdinalEncoder(cols=['category'])
-y = y_encoder.fit_transform(y)
+y: pd.Series = y_encoder.fit_transform(y)
 
 # Splitting the data into train and test sets
 x_train, x_test, y_train, y_test = model_selection.train_test_split(x, y)
@@ -36,22 +36,21 @@ print(x_train.head())
 print("__________________________________________________________________")
 
 # The list of criterion used in DecisionTreeClassifier
-criterion = ['gini', 'entropy']
+criterion: list = ['gini', 'entropy']
 
 # Iterating to observe result of DecisionTreeClassifier for each criteria
 for criteria in criterion:
-
     # Classifier class
-    dt = tree.DecisionTreeClassifier(criterion=criteria, max_depth=3)
+    dt: tree.DecisionTreeClassifier = tree.DecisionTreeClassifier(criterion=criteria, max_depth=3)
 
     # Training the classifier
     dt.fit(x_train, y_train)
 
     # Predicting the test data
-    y_pred = dt.predict(x_test)
+    y_pred: [] = dt.predict(x_test)
 
     # Observing the accuracy score
-    acc = accuracy_score(y_test, y_pred)
+    acc: float = accuracy_score(y_test, y_pred)
     print("Accuracy score for " + criteria + " criterion: ", acc)
 
     # Observing confusion matrix

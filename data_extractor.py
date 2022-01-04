@@ -7,7 +7,8 @@ data: list = []
 # Loop for iterating over first 15 pages of Pakwheels api calls
 for i in range(1, 16):
     # Url of api
-    url: str = "https://www.pakwheels.com/used-cars/search/-/ct_karachi/.json?client_id=37952d7752aae22726aff51be531cddd&client_secret=014a5bc91e1c0f3af4ea6dfaa7eee413&api_version=15&page=" + str(i) + "&extra_info=true"
+    url: str = "https://www.pakwheels.com/used-cars/search/-/ct_karachi/.json?client_id=37952d7752aae22726aff51be531cddd&client_secret=014a5bc91e1c0f3af4ea6dfaa7eee413&api_version=15&page=" + str(
+        i) + "&extra_info=true"
     # Jason object of result
     res = requests.get(url).json()['result']
     # Total number of in-listed cars for sale
@@ -43,20 +44,20 @@ for i in range(1, 16):
             pass
 
 # Column names of our data
-cols = ['make',
-        'model_year',
-        'engine_capacity',
-        'air_bags',
-        'air_conditioning',
-        'power_windows',
-        'power_steering',
-        'sun_roof',
-        'alloy_rims',
-        'category',
-        'price']
+cols: list = ['make',
+              'model_year',
+              'engine_capacity',
+              'air_bags',
+              'air_conditioning',
+              'power_windows',
+              'power_steering',
+              'sun_roof',
+              'alloy_rims',
+              'category',
+              'price']
 
 # Converting the data into Pandas DataFrame object
-df = pd.DataFrame(data, columns=cols)
+df: pd.DataFrame = pd.DataFrame(data, columns=cols)
 
 # Saving the data in a csv file
 df.to_csv("data.csv", index=False)
