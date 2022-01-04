@@ -59,5 +59,5 @@ cols: list = ['make',
 # Converting the data into Pandas DataFrame object
 df: pd.DataFrame = pd.DataFrame(data, columns=cols)
 
-# Saving the data in a csv file
+# Saving the data in a csv file without DataFrame index column
 df.to_csv("data.csv", index=False)

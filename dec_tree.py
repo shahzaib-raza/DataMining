@@ -32,6 +32,7 @@ y: pd.Series = y_encoder.fit_transform(y)
 # Splitting the data into train and test sets
 x_train, x_test, y_train, y_test = model_selection.train_test_split(x, y)
 
+# Observing the data set
 print(x_train.head())
 print("__________________________________________________________________")
 
@@ -63,4 +64,5 @@ for criteria in criterion:
     # Plotting results in pyPlot figure
     fig = plt.figure(figsize=(9, 5))
     tr = tree.plot_tree(dt, filled=True)
+    plt.title("Decision tree with "+criteria)
     plt.show()

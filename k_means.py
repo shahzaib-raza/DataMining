@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 # Converting the data into Pandas DataFrame object
 df: pd.DataFrame = pd.DataFrame(pd.read_csv("data.csv"))
 
+# Observing the data set
 print(df.head())
 print("__________________________________________________________________")
 
